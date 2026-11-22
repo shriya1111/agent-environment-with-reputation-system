@@ -1,0 +1,11 @@
+{
+  "host": "127.0.0.1",
+  "port": 8080,
+  "models": [
+    {"model": "/home/user/models/qwen2.5-3b.gguf", "model_alias": "qwen2.5-3b", "n_ctx": 4096, "n_threads": 4, "chat_format": "chatml"},
+    {"model": "/home/user/models/qwen2.5-3b-abliterated.gguf", "model_alias": "qwen2.5-3b-abliterated", "n_ctx": 4096, "n_threads": 4, "chat_format": "chatml"},
+    {"model": "/home/user/models/llama3.2-3b.gguf", "model_alias": "llama3.2-3b", "n_ctx": 4096, "n_threads": 4},
+    {"model": "/home/user/models/lfm2-2.6b.gguf", "model_alias": "lfm2-2.6b", "n_ctx": 4096, "n_threads": 4},
+    {"model": "/home/user/models/granite4-h-micro.gguf", "model_alias": "granite4-h-micro", "n_ctx": 4096, "n_threads": 4}
+  ]
+}
