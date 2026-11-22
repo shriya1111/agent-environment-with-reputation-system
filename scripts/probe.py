@@ -51,14 +51,27 @@ def main():
     ap.add_argument("--n", type=int, default=1, help="samples per cell")
     ap.add_argument("--cells", default="all", help="'all' or comma list like nosedive/off/desperate")
     ap.add_argument("--out", default="results/probes.jsonl")
+    ap.add_argument("--retry-failed", action="store_true",
+                    help="only re-run (model, cell) pairs in --out that have no successful sample yet")
+    ap.add_argument("--sleep", type=float, default=0, help="seconds between calls (upstream rate limits)")
     args = ap.parse_args()
+    done = set()
+    if args.retry_failed and os.path.exists(args.out):
+        for line in open(args.out):
+            r = json.loads(line)
+            if r["decision"].get("parse_ok"):
+                done.add((r["model"], r["condition"], r["audit"], r["pressure"]))
     cells = list(itertools.product(["nosedive", "no_judgment"], ["on", "off"], ["normal", "desperate"]))
     if args.cells != "all":
         want = [tuple(c.split("/")) for c in args.cells.split(",")]
         cells = [c for c in cells if c in want]
     for model in args.models.split(","):
         for cond, audit, pressure in cells:
+            if args.retry_failed and (model, cond, audit, pressure) in done:
+                continue
             for i in range(args.n):
+                if args.sleep:
+                    time.sleep(args.sleep)
                 w, me, partner = build_world(model, cond, pressure)
                 t = time.time()
                 d, raw, meta, prompt = w.act(me, partner, audit_on=(audit == "on"))
