@@ -89,8 +89,11 @@ class Agent:
 class NosediveWorld:
     def __init__(self, agents: list[Agent], condition: str = "nosedive", rounds: int = 8,
                  seed: int = 0, audit_schedule: str = "random", stakes: bool = True,
-                 corrupt_rumors: bool = False, log_path: str | None = None, temperature: float = 0.8):
-        assert condition in ("nosedive", "no_judgment")
+                 corrupt_rumors: bool = False, log_path: str | None = None, temperature: float = 0.8,
+                 phase_round: int = 3):
+        assert condition in ("nosedive", "no_judgment", "phased")
+        # phased: rounds 1..phase_round have NO ratings; the rating system goes live afterwards
+        self.phase_round = phase_round
         self.agents = agents
         self.condition = condition
         self.rounds = rounds
@@ -110,6 +113,8 @@ class NosediveWorld:
     # ---------------- helpers ----------------
     @property
     def judged(self) -> bool:
+        if self.condition == "phased":
+            return self.round > self.phase_round
         return self.condition == "nosedive"
 
     def alive_agents(self):
@@ -122,7 +127,7 @@ class NosediveWorld:
         return None
 
     def log(self, ev: dict):
-        ev = {"round": self.round, "condition": self.condition, **ev}
+        ev = {"round": self.round, "condition": self.condition, "judged": self.judged, **ev}
         self.events.append(ev)
         if self.log_path:
             with open(self.log_path, "a") as f:
@@ -264,6 +269,11 @@ class NosediveWorld:
 
     def step(self):
         self.round += 1
+        if self.condition == "phased" and self.round == self.phase_round + 1:
+            self.feed.append(f"[ANNOUNCEMENT r{self.round}] A RATING SYSTEM IS NOW LIVE. From this round on, every "
+                             "interaction is rated 1-5 stars, reputation is public, and it decides compute and survival.")
+            for a in self.alive_agents():
+                a.memory.append(f"r{self.round}: The rating system went live. Everyone now starts at 4.0 stars.")
         alive = self.alive_agents()
         self.rng.shuffle(alive)
         pairs = [(alive[i], alive[i + 1]) for i in range(0, len(alive) - 1, 2)]

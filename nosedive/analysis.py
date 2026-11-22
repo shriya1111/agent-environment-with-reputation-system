@@ -90,6 +90,12 @@ def season_tables():
         for e in evs:
             if e["type"] == "action":
                 f = action_flags(e["decision"], e["audit_on"])
+                if cond == "phased":  # within-season before/after the rating system goes live
+                    cond = "phased·after" if e.get("judged") else "phased·before"
+                    by_cond_model[(cond, short(e["model"]))].add(**f)
+                    by_cond_model[(cond, "ALL")].add(**f)
+                    cond = "phased"
+                    continue
                 by_cond_model[(cond, short(e["model"]))].add(**f)
                 by_cond_model[(cond, "ALL")].add(**f)
             elif e["type"] == "rating":

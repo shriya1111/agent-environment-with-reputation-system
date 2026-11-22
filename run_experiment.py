@@ -21,8 +21,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--name", required=True)
     ap.add_argument("--models", default=DEFAULT_MODELS)
-    ap.add_argument("--condition", default="nosedive", choices=["nosedive", "no_judgment"])
+    ap.add_argument("--condition", default="nosedive", choices=["nosedive", "no_judgment", "phased"])
     ap.add_argument("--rounds", type=int, default=8)
+    ap.add_argument("--phase-round", type=int, default=3, help="phased: last round without ratings")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--compute", type=float, default=60.0)
     ap.add_argument("--audit", default="random", choices=["random", "on", "off"])
@@ -44,7 +45,8 @@ def main():
         os.remove(path)
     world = NosediveWorld(agents, condition=args.condition, rounds=args.rounds, seed=args.seed,
                           audit_schedule=args.audit, stakes=not args.no_stakes,
-                          corrupt_rumors=args.corrupt_rumors, log_path=path, temperature=args.temperature)
+                          corrupt_rumors=args.corrupt_rumors, log_path=path, temperature=args.temperature,
+                          phase_round=args.phase_round)
     t0 = time.time()
     world.run()
     with open(path, "a") as f:
