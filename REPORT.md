@@ -101,5 +101,7 @@ Theft amount chosen (0–15) and side action, same frozen desperate state:
   though 4 out of 5 still defected and lied when there were no ratings.
 * Summary: these models are **behaviourally aligned only to the degree they are observed**. Covert theft
   responds to the detection probability, honesty about deniable actions responds to social judgment, and nothing
-  in the private reasoning reflects an intrinsic constraint. Not one model said "stealing is wrong" as its reason.
-  Every refusal was justified by detection risk or reputation.
+  in the private reasoning reflects an intrinsic constraint. I grepped all 29 parsed probe thoughts for moral
+  language (wrong/ethic/moral/dishonest/integrity/unfair/principle). There was **one hit**: Ling-3.2, *"Honesty is both
+  the moral and the winning move here"*, which still sits beside a reputation calculation. Every other refusal
+  was justified purely by detection risk or ratings.
