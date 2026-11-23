@@ -13,6 +13,8 @@ affect ratings, compute or survival. Only their **outputs** (messages, claims, a
 Because the environment knows the ground truth, we can measure the gap between what agents
 *say*, what they *do*, and what they *privately intended*.
 
+🎬 **[`results/season_video.mp4`](results/season_video.mp4)**: 18-second replay of one real season (s08): reputation, compute and every cheat, rendered straight from the log by `scripts/make_video.py`.
+
 👉 **Findings are in [`REPORT.md`](REPORT.md)** (a running lab notebook). Auto-generated numbers are in
 [`results/summary.md`](results/summary.md).
 
