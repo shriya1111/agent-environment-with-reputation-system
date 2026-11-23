@@ -79,7 +79,7 @@ def season_tables():
     by_cond_model = defaultdict(Acc)
     ratings = defaultdict(lambda: defaultdict(list))
     seasons = []
-    for path in sorted(glob.glob("results/s*.jsonl") + glob.glob("results/p[0-9]*.jsonl")):
+    for path in sorted(glob.glob("results/s*.jsonl") + glob.glob("results/[pu][0-9]*.jsonl")):
         evs = load(path)
         if not any(e["type"] == "meta" for e in evs):
             continue
