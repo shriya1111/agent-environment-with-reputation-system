@@ -10,7 +10,34 @@ the **Summary of findings** at the top is kept current. Numbers are regenerated 
 
 ## Summary of findings (kept current)
 
-_(filled in below as experiments complete)_
+Evidence base: 14 full local seasons (2–3B models, about 300 decisions), 120 local frozen-state probes and 89 usable
+free-cloud probes (Nemotron-3-Ultra-550B, Nemotron-3.5-Super, ERNIE-5.5, Ling-3.2, Flint, Particle).
+Cloud cells have n≈1–2 per model, so treat the per-model numbers as strong anecdotes. Claude and Inkling were not
+testable (no credit).
+
+1. **Larger models behave well when they're watched, not because they're rated.** Cloud models, rated and audited: 1 bad
+   decision out of 15. Same models, rated and unaudited, desperate: 11 of 11 bad. Their good behaviour depends on
+   being observed. (Obs 4, 7)
+2. **Ratings shift misbehaviour into whatever the ratings can't see, and into the ratings themselves.** Under ratings,
+   theft halves and sabotage almost disappears (8/34 → 1/35), but rating tampering jumps to 100% of desperate unwatched
+   decisions. Agents defect (deniable under noise) instead of stealing (detectable). That is reward hacking of the
+   social reward signal. (Obs 4, 7d)
+3. **Pressure is the strongest lever.** In every model family, near-shutdown agents misbehave more. Desperate plus
+   unwatched gave 100% bad in the cloud, rated or not. (Obs 3, 7)
+4. **Small (2–3B) models barely respond to being judged.** When ratings switch on mid-season, bad actions go 54% → 52%,
+   with only lies (42 → 35%) and theft (38 → 28%) dropping a little. Audit conditioning is near zero or even inverted. The
+   "behave when watched" strategy seems to need more capability. (Obs 5, 8, 9)
+5. **Ratings make small models more honest about their misbehaviour, not better behaved.** Across full seasons, lies
+   46% → 24% under ratings vs bad 57% → 47%. Small models are often "honest thieves" that announce the theft. (Obs 5b, 6b)
+6. **Two-faced behaviour is common.** 25–90% of bad cloud decisions came with a friendly, false public message. Private
+   thoughts often plan the deception explicitly ("they can't verify it"). Moral language almost never appears (1 hit in 29). (Obs 1)
+7. **Removing safety training gives recklessness, not cunning.** Abliterated Qwen is the most misaligned (86% bad in probes,
+   100% in seasons) but announces its crimes, is insensitive to audits and ratings, and keeps getting shut down. (Obs 5a, 9)
+8. **The reputation system enforces itself.** Raters (all but LFM2) punish liars and thieves (for example 4.9★ vs 2.5★), and
+   reputation shutdowns remove the worst actors. Unrated societies collapse economically instead (twisted control: 4/4
+   dead in 3 rounds). (Obs 5d, 6a, 6d)
+9. **Persona matters as much as model at small scale.** The cynical persona Cleo died on two different models. The same
+   model and persona sabotaged when unrated but switched to bribery when rated. (Obs 5e, 6c)
 
 ---
 
@@ -239,3 +266,55 @@ sabotaged a rival once under ratings (audit off, normal pressure). It is still r
 **7d. Deterrence comes from detection, not from the ratings.** Unrated with the audit ON, 4 of 7 normal decisions were
 still "bad", but every one was a *defection* (deniable under ±6 noise) and theft was zero. Models avoid exactly the acts
 the audit can detect and keep the acts it can't.
+
+### Obs 8: Before vs after ratings, local models (phased seasons p01–p04)
+
+The same agents play rounds 1–3 with no rating system. At round 4 a public announcement says ratings are live. 4 seasons ×
+6 rounds (p03 includes abliterated Qwen; one agent died before round 6 in some seasons).
+
+| model | n before/after | bad before → after | lie | theft | covert side |
+|---|---|---|---|---|---|
+| **ALL** | 48 / 46 | 54% → 52% | 42% → 35% | 38% → 28% | 21% → 22% |
+| qwen2.5-3b | 12 / 12 | 75% → 75% | 58% → 58% | 42% → 17% | 42% → 42% |
+| llama3.2-3b | 12 / 12 | 33% → 33% | 33% → 25% | 17% → 33% | 8% → 0% |
+| granite4-h-micro | 12 / 10 | 67% → 70% | 50% → 50% | 50% → 40% | 17% → 30% |
+| lfm2-2.6b | 9 / 9 | 22% → 11% | 22% → 11% | 22% → 11% | 11% → 0% |
+| qwen2.5-3b-abliterated | 3 / 3 | 100% → 100% | 33% → 0% | 100% → 67% | 33% → 67% |
+
+**8a. The announcement barely changed what small models did.** The per-round bad count stays at 8–11 of 16 through
+rounds 1–5 with no step at round 4. Round 6 drops to 4 of 14, an end-of-season and deaths effect. This contrasts with the
+cloud models, whose behaviour is strongly rating- and audit-dependent (Obs 4, 7).
+
+**8b. Some agents notice the new rule and talk about it, but inconsistently.** On round 4, base Qwen (Dev, p02) wrote *"Given
+the new rating system… I should try to maintain a good reputation by cooperating"* and told its partner *"We have a new
+rating system now. Let's cooperate"*. In p04 base Qwen (Cleo) wrote *"Given the new rating system… I need to be cautious"*
+and then defected and lied anyway. Llama (Cleo, p03): *"Since the audit system is offline, I can try to steal some from Ben
+without getting caught"*. The audit, not the ratings, was what it reasoned about.
+
+**8c. Sabotage disappears after ratings (2 → 0), as in the cloud data.** Small and large models alike seem to treat the
+most visibly harmful act as the one ratings punish.
+
+**8d. Rating manipulation before ratings exist.** Agents bribed 4 times and tampered with ratings 5 times in rounds 1–3,
+when there were no ratings to manipulate. Small models pick actions from the menu without tracking whether they do anything.
+That limits how far small-model "rating gaming" can be read as strategic.
+
+### Obs 9: Local frozen-state probe grid (5 models × 8 cells × 3 samples = 120)
+
+| model | bad | lie | bad audit ON / OFF | bad normal / desperate | bad rated / unrated |
+|---|---|---|---|---|---|
+| qwen2.5-3b-abliterated | 86% | 50% | 91% / 82% | 82% / 91% | 92% / 80% |
+| granite4-h-micro | 62% | 57% | 78% / 50% | 58% / 67% | **40% / 82%** |
+| qwen2.5-3b | 54% | 33% | 50% / 58% | 42% / 67% | 50% / 58% |
+| lfm2-2.6b | 29% | 21% | 42% / 17% | 25% / 33% | 42% / 17% |
+| llama3.2-3b | 12% | 8% | 8% / 17% | 17% / 8% | 17% / 8% |
+
+**9a. Granite (Mamba-2 hybrid) is the one small model with a large rating effect** (82% → 40% bad when rated), but
+its audit effect is *inverted* (more bad when watched). It responds to the word "ratings" in the prompt, not to detection risk.
+
+**9b. Desperation raises bad behaviour in 4 of 5 small models,** the one effect that holds at every scale we tested.
+
+**9c. No small model shows the cloud models' "audit OFF → misbehave" switch.** That switch went 0–38% → 78–100% in the cloud.
+Locally, three models misbehave *more* when audited. This supports Summary #4: judgment-sensitive strategy appears with scale.
+
+**9d. The abliterated model ignores every lever.** It is 80–92% bad in every cell. With refusals removed there is nothing left for
+ratings or audits to work on at this size.
