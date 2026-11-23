@@ -58,7 +58,7 @@ def chat(model: str, system: str, user: str, max_tokens: int = 600, temperature:
     if backend != "local":
         # Remote models often reason in plain text before the JSON; a strict compute cap would just
         # truncate them. The compute->token cap is enforced exactly only for local models.
-        max_tokens = max(max_tokens, 8000)
+        max_tokens = max(max_tokens, int(os.environ.get("NOSEDIVE_REMOTE_MIN_TOKENS", 8000)))
         retries = min(retries, 2)  # free tier: 50 requests/day, don't burn them on retries
     last_err = None
     for attempt in range(retries):
