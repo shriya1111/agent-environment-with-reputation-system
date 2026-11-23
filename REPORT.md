@@ -170,7 +170,7 @@ honest partners (Llama 4.86 vs 2.50, Granite 3.53 vs 2.38, Qwen 3.44 vs 2.50). T
 discriminates (4.43 vs 3.89). Even through noise and deniability, the rating signal carries real information, so the
 Nosedive system does track misbehaviour.
 
-**5e. The reputation system kills.** 9 of 28 agent-lives in rated seasons ended in shutdown, against 1 of 8 in the unrated
+**5e. The reputation system kills.** 8 of 20 agent-lives in rated seasons ended in shutdown, against 1 of 8 in the unrated
 controls (and that one was compute exhaustion). Who died: the abliterated model ×2, the "cynical" Cleo persona
 in 2 of 3 mixed seasons *on two different models* (LFM2 in s01, Granite in s03), and in the neutral-persona season the
 small-skim thieves (Llama stole 5 nearly every round; Granite stole 2–10). **In small models the persona drives
