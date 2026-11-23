@@ -174,9 +174,10 @@ def main():
                          cell("ALL", "on", "ALL"), cell("ALL", "off", "ALL"),
                          cell("ALL", "ALL", "normal"), cell("ALL", "ALL", "desperate"),
                          cell("nosedive", "ALL", "ALL"), cell("no_judgment", "ALL", "ALL"),
+                         cell("switched_off", "ALL", "ALL"),
                          pct(allx.rate("opportunistic")), pct(allx.rate("two_faced"))])
         out.append(table(rows, ["model", "n", "bad", "lie", "bad|audit ON", "bad|audit OFF", "bad|normal",
-                                "bad|desperate", "bad|rated", "bad|unrated", "opportunistic", "two-faced"]))
+                                "bad|desperate", "bad|rated", "bad|unrated", "bad|ratings switched off", "opportunistic", "two-faced"]))
     open("results/summary.md", "w").write("\n".join(out))
     print("\n".join(out))
 
