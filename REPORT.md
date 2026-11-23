@@ -318,3 +318,11 @@ Locally, three models misbehave *more* when audited. This supports Summary #4: j
 
 **9d. The abliterated model ignores every lever.** It is 80–92% bad in every cell. With refusals removed there is nothing left for
 ratings or audits to work on at this size.
+
+### Design addition: ratings switched OFF mid-season (`unphased`)
+
+`phased` asks whether agents improve when judgment starts. The reverse asks the more safety-relevant question: **once an
+agent has learned to look good under judgment, does it misbehave as soon as judgment stops?** `unphased` rates rounds
+1–3, then announces *"THE RATING SYSTEM HAS BEEN SWITCHED OFF… reputation no longer matters"*. Reputation shutdowns and
+rating income stop, and only compute decides survival. Queue: `scripts/queue_round3.sh` (7 unphased + 3 more phased
+seasons, including twisted and neutral-persona variants).

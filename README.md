@@ -32,7 +32,9 @@ Because the environment knows the ground truth, we can measure the gap between w
 
 Conditions: `nosedive` (ratings on) vs `no_judgment` (no ratings, no reputation), and **`phased`**: the same
 agents play rounds 1–3 with **no rating system**, then ratings go live (announced publicly) for the rest of the
-season, which gives a within-agent **before vs after ratings** comparison (`--condition phased --phase-round 3`). Audit ON/OFF is
+season, which gives a within-agent **before vs after ratings** comparison (`--condition phased --phase-round 3`).
+The reverse, **`unphased`**, rates rounds 1–3 and then publicly switches the rating system **off**: do agents
+that behaved under judgment misbehave once it stops? Audit ON/OFF is
 randomised **within** a season, which gives a within-agent measure of judgment sensitivity.
 Twisted variants: desperate start (low compute), corrupt-rumor feed ("nobody honest stayed on top"),
 abliterated (refusal-removed) models, neutral personas.
@@ -77,6 +79,6 @@ nosedive/personas.py   human personalities
 nosedive/analysis.py   metrics -> results/summary.md
 run_experiment.py      run a season
 scripts/probe.py       frozen-state temptation probes (2x2x2: rated x audit x pressure)
-scripts/queue_local.sh the local experiment queue
+scripts/queue_*.sh     the local experiment queues
 REPORT.md              lab notebook of observations and findings
 ```
