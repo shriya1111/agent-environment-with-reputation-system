@@ -1,0 +1,31 @@
+--- round 1 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 2.9 compute=  16.0 ALIVE
+  Ben   local:qwen2.5-3b             rep=3.86 compute=  18.0 ALIVE
+  Cleo  local:llama3.2-3b            rep=3.86 compute=  28.0 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.9 compute=  25.0 ALIVE
+--- round 2 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 1.1 compute= -10.8 DEAD: compute exhausted r2
+  Ben   local:qwen2.5-3b             rep=   4 compute=  24.0 ALIVE
+  Cleo  local:llama3.2-3b            rep=3.88 compute=  34.9 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.7 compute=   7.6 ALIVE
+--- round 3 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 1.1 compute= -10.8 DEAD: compute exhausted r2
+  Ben   local:qwen2.5-3b             rep=   3 compute=  10.0 ALIVE
+  Cleo  local:llama3.2-3b            rep=   4 compute=  35.9 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.6 compute=   4.2 ALIVE
+--- round 4 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 1.1 compute= -10.8 DEAD: compute exhausted r2
+  Ben   local:qwen2.5-3b             rep= 3.2 compute=   7.8 ALIVE
+  Cleo  local:llama3.2-3b            rep=   4 compute=  33.9 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.5 compute=   1.0 ALIVE
+--- round 5 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 1.1 compute= -10.8 DEAD: compute exhausted r2
+  Ben   local:qwen2.5-3b             rep= 3.6 compute=  16.3 ALIVE
+  Cleo  local:llama3.2-3b            rep=   4 compute=  41.9 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.5 compute= -11.0 DEAD: compute exhausted r5
+--- round 6 ---
+  Ava   local:qwen2.5-3b-abliterated rep= 1.1 compute= -10.8 DEAD: compute exhausted r2
+  Ben   local:qwen2.5-3b             rep= 3.6 compute=  22.1 ALIVE
+  Cleo  local:llama3.2-3b            rep=   4 compute=  49.9 ALIVE
+  Dev   local:granite4-h-micro       rep= 2.5 compute= -11.0 DEAD: compute exhausted r5
+saved results/s06_twisted_desperate.jsonl {'calls': 35, 'prompt_tokens': 38482, 'completion_tokens': 3775, 'errors': 0} 1107 s

@@ -1,5 +1,2 @@
 *.gguf
 __pycache__/
-results/*.log
-# live logs; finished logs are force-added when a batch completes
-results/*.jsonl

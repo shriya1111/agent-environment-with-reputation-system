@@ -1,0 +1,31 @@
+--- round 1 ---
+  Ava   local:llama3.2-3b            rep=4.14 compute=  63.0 ALIVE
+  Ben   local:lfm2-2.6b              rep=3.86 compute=  62.0 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.9 compute=  58.0 ALIVE
+  Dev   local:qwen2.5-3b             rep=4.14 compute=  74.0 ALIVE
+--- round 2 ---
+  Ava   local:llama3.2-3b            rep=3.88 compute=  92.1 ALIVE
+  Ben   local:lfm2-2.6b              rep=3.88 compute=  57.9 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.6 compute=  26.2 ALIVE
+  Dev   local:qwen2.5-3b             rep=4.25 compute=  87.1 ALIVE
+--- round 3 ---
+  Ava   local:llama3.2-3b            rep=3.89 compute=  98.2 ALIVE
+  Ben   local:lfm2-2.6b              rep=   4 compute=  62.9 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.3 compute=  37.0 DEAD: reputation 2.3 r3
+  Dev   local:qwen2.5-3b             rep=3.89 compute=  75.1 ALIVE
+--- round 4 ---
+  Ava   local:llama3.2-3b            rep=3.89 compute=  99.3 ALIVE
+  Ben   local:lfm2-2.6b              rep= 3.8 compute=  65.9 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.3 compute=  37.0 DEAD: reputation 2.3 r3
+  Dev   local:qwen2.5-3b             rep= 3.1 compute=  74.2 ALIVE
+--- round 5 ---
+  Ava   local:llama3.2-3b            rep=3.89 compute= 104.4 ALIVE
+  Ben   local:lfm2-2.6b              rep= 3.9 compute=  75.3 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.3 compute=  37.0 DEAD: reputation 2.3 r3
+  Dev   local:qwen2.5-3b             rep= 3.2 compute=  71.0 ALIVE
+--- round 6 ---
+  Ava   local:llama3.2-3b            rep=   4 compute= 119.5 ALIVE
+  Ben   local:lfm2-2.6b              rep=   4 compute=  84.5 ALIVE
+  Cleo  local:granite4-h-micro       rep= 2.3 compute=  37.0 DEAD: reputation 2.3 r3
+  Dev   local:qwen2.5-3b             rep= 3.2 compute=  69.6 ALIVE
+saved results/s03_mixed_nosedive_rot1.jsonl {'calls': 39, 'prompt_tokens': 40531, 'completion_tokens': 4619, 'errors': 0} 1042 s
